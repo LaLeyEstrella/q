@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem Ipsum Multilingüe</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: direction 0.3s ease;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        nav {
+            margin-bottom: 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav a:hover, nav a.active {
+            color: #1abc9c;
+            text-decoration: underline;
+        }
+        .lang-selector select {
+            padding: 6px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #bdc3c7;
+            background-color: white;
+            cursor: pointer;
+        }
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 200px;
+            text-align: start; 
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* View Toggle Mechanic */
+        .page-content {
+            display: none;
+        }
+        .page-content.active-view {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="main-title">Lorem Ipsum</h1>
+        <nav>
+            <a onclick="showPage('index')" id="lnk-idx" class="active">Inicio</a> | 
+            <a onclick="showPage('contenido1')" id="lnk-c1">Contenido 1</a> | 
+            <a onclick="showPage('contenido2')" id="lnk-c2">Contenido 2</a>
+        </nav>
+        <div class="lang-selector">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="la">Latin</option>
+                <option value="es" selected>Español</option>
+                <option value="fr">Français (Francés)</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="gug">Guaraní</option>
+                <option value="eo">Esperanto</option>
+                <option value="ar">العربية (Árabe)</option>
+                <option value="he">עברית (Hebreo)</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <div id="page-index" class="page-content active-view">
+            <h2 id="idx-title">Cargando...</h2>
+            <p id="idx-p">Cargando...</p>
+        </div>
+
+        <!-- Content 1 Section -->
+        <div id="page-contenido1" class="page-content">
+            <h2 id="c1-title">Cargando...</h2>
+            <p id="c1-p">Cargando...</p>
+        </div>
+
+        <!-- Content 2 Section -->
+        <div id="page-contenido2" class="page-content">
+            <h2 id="c2-title">Cargando...</h2>
+            <p id="c2-p">Cargando...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lorem Ipsum Multilingual</p>
+    </footer>
+
+    <script>
+        // Dictionary fully extended with French, Italian, and Guaraní
+        const translations = {
+            la: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Initium", nav_c1: "Contentum 1", nav_c2: "Contentum 2",
+                idx_title: "Lorem Ipsum", idx_p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id lorem non magna accumsan.",
+                c1_title: "Contentum Primum", c1_p: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                c2_title: "Contentum Secundum", c2_p: "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio nullam varius."
+            },
+            es: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Inicio", nav_c1: "Contenido 1", nav_c2: "Contenido 2",
+                idx_title: "Bienvenidos a Inicio", idx_p: "El texto simulado es útil porque no distrae la atención del diseño original de la página.",
+                c1_title: "Sección de Contenido 1", c1_p: "Esta es la primera sección de prueba con acentos impecables como la combinación de caracteres (á, é, í, ó, ú).",
+                c2_title: "Sección de Contenido 2", c2_p: "Aquí tienes más texto en español para comprobar la distribución de los bloques y las tipografías."
+            },
+            fr: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Accueil", nav_c1: "Contenu 1", nav_c2: "Contenu 2",
+                idx_title: "Bienvenue à l'Accueil", idx_p: "Le faux texte (lorem ipsum) est utile car il ne distrait pas l'attention du design. Il permet de voir la répartition des paragraphes.",
+                c1_title: "Section de Contenu 1", c1_p: "Ceci est la première section de test avec des accents français impeccables comme la combinaison de caractères (é, è, à, ç, ù).",
+                c2_title: "Section de Contenu 2", c2_p: "Voici plus de texte pour tester la mise en page, l'alignement et les polices de caractères."
+            },
+            it: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Home", nav_c1: "Contenuto 1", nav_c2: "Contenuto 2",
+                idx_title: "Benvenuti nella Home", idx_p: "Il testo segnaposto (lorem ipsum) è utile perché non distrae l'attenzione dal layout grafico della pagina.",
+                c1_title: "Sezione di Contenuto 1", c1_p: "Questa è la prima sezione di prova con accenti italiani corretti come la combinazione di lettere (à, è, é, ì, ò, ù).",
+                c2_title: "Sezione di Contenuto 2", c2_p: "Ecco altro testo in italiano per verificare la distribuzione dei blocchi e la leggibilità della tipografia."
+            },
+            pt: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Início", nav_c1: "Conteúdo 1", nav_c2: "Conteúdo 2",
+                idx_title: "Bem-vindo ao Início", idx_p: "O lorem ipsum é um texto padrão usado na indústria tipográfica e visual para focar no design.",
+                c1_title: "Seção de Conteúdo 1", c1_p: "Esta é a primeira seção demonstrativa em português, exibindo caracteres como ações e avós.",
+                c2_title: "Seção de Conteúdo 2", c2_p: "Exibindo mais parágrafos para testar a paginação e o alinhamento do texto fictício."
+            },
+            gug: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Ñepyrũha", nav_c1: "Mbytegua 1", nav_c2: "Mbytegua 2",
+                idx_title: "Maitei, eguahé porã", idx_p: "Ko moñe'ẽrã ojeipuru ojehecha hag̃ua mba'éichapa opytáta umi haipyre, kuatiarogue ha ta'anga kuéra oñemohenda mboyve pe marandu te'ete.",
+                c1_title: "Mbytegua peteĩha vore", c1_p: "Kóva ha'e pe vore peteĩha ojehecha hag̃ua mba'éichapa oñembohekuái Avañe'ẽ muanduhe tĩgua ha puso kuéra (ã, ẽ, g̃, ĩ, õ, ũ, ỹ, ’).",
+                c2_title: "Mbytegua mokõiha vore", c2_p: "Ápe oĩve haipyre Guaraníme ikatu hag̃uáicha rehecha mba'éichapa opyta hína umi mbyky ha tãndy kuéra ne ñanduti rendápe."
+            },
+            eo: {
+                dir: "ltr", main_title: "Lorem Ipsum",
+                nav_inicio: "Hejmo", nav_c1: "Enhavo 1", nav_c2: "Enhavo 2",
+                idx_title: "Bonvenon al Hejmo", idx_p: "Lorem ipsum estas fikcia teksto uzata en presejo kaj aranĝofasonado por provi aspektojn.",
+                c1_title: "Teksta Ekzemplo 1", c1_p: "Esperantaj supersignoj kiel ĉ, ĝ, ĥ, ĵ, ŝ, kaj ŭ devas aperi tute perfekte.",
+                c2_title: "Teksta Ekzemplo 2", c2_p: "Ĉi tiu estas the dua sekcio demonstranta la lingvon Esperanto en via retejo."
+            },
+            ar: {
+                dir: "rtl", main_title: "لوريم إيبسوم",
+                nav_inicio: "الرئيسية", nav_c1: "المحتوى ١", nav_c2: "المحتوى ٢",
+                idx_title: "مرحباً بكم في الصفحة الرئيسية", idx_p: "النص البديل أو ما يُعرف بلوريم إيبسوم هو نص مؤقت يُستخدم في التصميم لملء الفراغات دون تشتيت الانتباه.",
+                c1_title: "قسم المحتوى الأول", c1_p: "هذا هو القسم الأول لاختبار محاذاة النص العربي وتوزيع الفقرات والخطوط بشكل صحيح على خوادم جيت هاب.",
+                c2_title: "قسم المحتوى الثاني", c2_p: "هنا تجد المزيد من النصوص العربية الوهمية لمساعدتك في معاينة المساحات وتناسق الأبعاد البصرية للموقع."
+            },
+            he: {
+                dir: "rtl", main_title: "לורם איפסום",
+                nav_inicio: "דף הבית", nav_c1: "תוכן 1", nav_c2: "תוכן 2",
+                idx_title: "ברוכים הבאים לדף הבית", idx_p: "טקסט מדומה (לורם איפסום) משמש כלי לעיצוב ובדיקת פריסה, המאפשר להתמקד במבנה החזותי ללא הסחת דעת מהתוכן.",
+                c1_title: "מדור תוכן ראשון", c1_p: "זהו מדור הבדיקה הראשון עבור השפה העברית. כל האותיות והסימנים צריכים להופיע כאן בצורה מושלמת וישרה מימין לשמאל.",
+                c2_title: "מדור תוכן שני", c2_p: "כאן תמצאו פסקאות נוספות בעברית כדי לבדוק את התפלגות הבלוקים והטיפוגרפיה של האתר החדש שלכם."
+            }
+        };
+
+        let currentLang = 'es';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const data = translations[lang];
+            if (!data) return;
+
+            document.documentElement.dir = data.dir;
+            document.documentElement.lang = lang;
+
+            document.getElementById('main-title').textContent = data.main_title;
+            document.getElementById('lnk-idx').textContent = data.nav_inicio;
+            document.getElementById('lnk-c1').textContent = data.nav_c1;
+            document.getElementById('lnk-c2').textContent = data.nav_c2;
+
+            document.getElementById('idx-title').textContent = data.idx_title;
+            document.getElementById('idx-p').textContent = data.idx_p;
+            document.getElementById('c1-title').textContent = data.c1_title;
+            document.getElementById('c1-p').textContent = data.c1_p;
+            document.getElementById('c2-title').textContent = data.c2_title;
+            document.getElementById('c2-p').textContent = data.c2_p;
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-view'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+
+            document.getElementById(`page-${pageId}`).classList.add('active-view');
+            
+            if (pageId === 'index') document.getElementById('lnk-idx').classList.add('active');
+            if (pageId === 'contenido1') document.getElementById('lnk-c1').classList.add('active');
+            if (pageId === 'contenido2') document.getElementById('lnk-c2').classList.add('active');
+        }
+
+        changeLanguage(currentLang);
+    </script>
+</body>
+</html>
